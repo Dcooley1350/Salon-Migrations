@@ -8,6 +8,7 @@
 <div class="card">
     <div class="card-body">
         <h1 class="card-title text-center">@Model.Name</h1>
+        @Html.ActionLink("Update This Stylist","Update","Stylist", new {id = Model.StylistId}, new { @class = "button btn btn-info"})
         @Html.ActionLink("Delete This Stylist","Delete","Stylist", new {id = Model.StylistId}, new { @class = "button btn btn-danger"})
     </div>
         
