@@ -56,5 +56,18 @@ namespace Salon.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            Client foundClient = _db.Clients.FirstOrDefault( client => client.ClientId == id);
+            ViewBag.BigBagOStylist = new SelectList(_db.Stylists, "StylistId", "Name");
+            return View(foundClient);
+        }
+        [HttpPost]
+        public ActionResult Update(Client client)
+        {
+            _db.Entry(client).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Index");}
     }
 }
