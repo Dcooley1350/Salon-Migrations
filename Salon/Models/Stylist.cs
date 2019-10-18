@@ -9,7 +9,7 @@ namespace Salon.Models
         }
         public string Specialty { get; set; }
         public string Name { get; set; }
-        public int StylistID {get; set; }
+        public int StylistId {get; set; }
         public virtual ICollection<Client> Clients { get; set; }
 
     }

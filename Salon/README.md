@@ -36,7 +36,14 @@ _The purpose of this application is to give Eau Claire's Salon employees the abi
   `name` VARCHAR(255) NOT NULL,  
   `specialty` VARCHAR(255) NOT NULL,  
   `stylistId` INT NOT NULL DEFAULT 0,
-  PRIMARY KEY (`stylistId`));
+  PRIMARY KEY (`stylistId`));  
+  *_To use this Database you will need to create a file "appsettings.json" in the Salon directory of the project. Add this text to the file:_  
+  {  
+    "ConnectionStrings": {  
+        "SalonConnection": "Server=localhost;Port=3306;database=salon;uid=root;pwd=epicodus;"  
+    }  
+  }  
+  _This will connect your application to the previously created Databases._
 
 
 
