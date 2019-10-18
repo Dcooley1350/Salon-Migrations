@@ -60,10 +60,10 @@ namespace Salon.Controllers
         public ActionResult Update(int id)
         {
             Client foundClient = _db.Clients.FirstOrDefault( client => client.ClientId == id);
-            ViewBag.BigBagOStylist = new SelectList(_db.Stylists, "StylistId", "Name");
+            ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
             return View(foundClient);
         }
-        [HttpPost]
+        [HttpPost, ActionName("Update")]
         public ActionResult Update(Client client)
         {
             _db.Entry(client).State = EntityState.Modified;
