@@ -1,0 +1,32 @@
+@{
+    Layout = "_Layout";
+}
+@using Salon.Models;
+@model Salon.Models.Stylist;
+
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">@Model.Name</h1>
+        @Html.ActionLink("Delete This Stylist","Delete","Stylist", new {id = Model.StylistId}, new { @class = "button btn btn-success"})
+    </div>
+        
+</div>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Stylists</h3>
+        @if(@ViewBag.Clients.Count == 0)
+        {
+            <h2><i>The Database contains no clients linked to this Stylist at this time.</i></h2>
+        }
+        else
+        {
+        <ul>
+            @foreach(Client model in @ViewBag.Clients)
+            {
+                <h2><li>@Html.ActionLink($"{model.Name}, Id: {model.ClientId}", "Details","Client", new { id = model.ClientId})</li></h2>
+            }
+        </ul>
+        }
+    </div>
+</div>

@@ -1,0 +1,36 @@
+@{
+    Layout = "_Layout";
+}
+@using Salon.Models;
+@model Salon.Models.Client;
+
+@if(@ViewBag.CheckList.Count == 0)
+{
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">There are no Stylists yet! Add a stylist before trying to add a client!</h1>
+        @Html.ActionLink("Add Stylist","Create","Stylist", null, new { @class = "button btn btn-success"})
+    </div>     
+</div>
+}
+else
+{
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">Add a New Client</h1>
+    </div>     
+</div>
+<div class="card">
+    <div class ="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(model => model.Name)
+            @Html.TextBoxFor(model => model.Name, new {@class = "form-control"})
+            <br>
+            @Html.LabelFor(model => model.Stylist)
+            @Html.DropDownList("SelectList")
+            <input type="submit" value="Add Client" class="btn button btn-success";>
+        }
+    </div>
+</div>
+}

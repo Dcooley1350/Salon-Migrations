@@ -1,0 +1,13 @@
+@{
+    Layout = "_Layout";
+}
+@using Salon.Models;
+@model Salon.Models.Client;
+
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">@Model.Name, ID: @Model.ClientId</h1>
+        @Html.ActionLink("Delete This Client","Delete","Client", new {id = Model.ClientId}, new { @class = "button btn btn-success"})
+    </div>     
+</div>

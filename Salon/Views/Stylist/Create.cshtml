@@ -1,0 +1,24 @@
+@{
+    Layout = "_Layout";
+}
+@using Salon.Models;
+@model Salon.Models.Stylist;
+
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">Add a New Stylist</h1>
+    </div>     
+</div>
+<div class="card">
+    <div class ="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(model => model.Name)
+            @Html.TextBoxFor(model => model.Name, new {@class = "form-control"})
+            @Html.LabelFor(model => model.Specialty)
+            @Html.TextBoxFor(model => model.Specialty, new {@class = "form-control"})
+            <input type="submit" value="Add Client" class="btn button btn-success";>
+        }
+    </div>
+</div>

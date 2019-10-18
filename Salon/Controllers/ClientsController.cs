@@ -26,6 +26,7 @@ namespace Salon.Controllers
         public ActionResult Create()
         {
             ViewBag.SelectList =new SelectList(_db.Stylists,"StylistId","Specialty");
+            ViewBag.CheckList = _db.Stylists.ToList();
             return View();
         }
         [HttpPost]
