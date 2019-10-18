@@ -36,5 +36,25 @@ namespace Salon.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            Client foundClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+            return View(foundClient);
+        }
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            Client foundClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+            return View(foundClient);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult Destroy(int id)
+        {
+            Client foundClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+            _db.Clients.Remove(foundClient);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -2,3 +2,30 @@
     Layout = "_Layout";
 }
 @using Salon.Models;
+@model Salon.Models.Stylist;
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-danger text-center">Are you sure you would like to delete Stylist: @Model.Name and associated clients?</h1>
+    </div>     
+</div>
+<div class="card">
+    <div class="card-body">
+        <h3>Clients:</h3>
+        <ul>
+            @foreach(Client client in ViewBag.AssociatedClients)
+            {
+                <li><h4>@client.Name</h4></li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            <input type="submit" value="Delete Stylist and Associated Clients" class="btn button btn-danger"/>
+        }
+        
+    </div>     
+</div>

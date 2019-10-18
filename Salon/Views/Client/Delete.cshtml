@@ -2,3 +2,15 @@
     Layout = "_Layout";
 }
 @using Salon.Models;
+@model Salon.Models.Client;
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-danger text-center">Are you sure you would like to delete customer: @Model.Name</h1>
+        @using (Html.BeginForm())
+        {
+            <input type="submit" value="Delete Client" class="btn button btn-danger"/>
+        }
+        
+    </div>     
+</div>

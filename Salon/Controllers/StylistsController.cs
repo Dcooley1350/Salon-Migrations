@@ -41,6 +41,7 @@ namespace Salon.Controllers
         public ActionResult Delete(int id)
         {
             Stylist foundStylist = _db.Stylists.FirstOrDefault( stylist => stylist.StylistId == id);
+            ViewBag.AssociatedClients = _db.Clients.Where( client => client.StylistId == id);
             return View(foundStylist);
         }
         [HttpPost, ActionName("Delete")]
