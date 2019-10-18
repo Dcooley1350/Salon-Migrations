@@ -46,8 +46,6 @@ _The purpose of this application is to give Eau Claire's Salon employees the abi
   _This will connect your application to the previously created Databases._
 
 
-
-
 ## Known Bugs
 
 _There are no known bugs at this time._
