@@ -20,12 +20,12 @@ namespace Salon.Controllers
         public ActionResult Index()
         {
             List<Client> model = _db.Clients.Include(clients => clients.Stylist).ToList();
-            return View("Index", model);
+            return View(model);
         }
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.SelectList =new SelectList(_db.Stylists,"StylistId","Specialty");
+            ViewBag.StylistId = new SelectList(_db.Stylists,"StylistId","Name");
             ViewBag.CheckList = _db.Stylists.ToList();
             return View();
         }

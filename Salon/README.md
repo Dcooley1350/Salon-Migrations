@@ -29,13 +29,13 @@ _The purpose of this application is to give Eau Claire's Salon employees the abi
     CREATE TABLE `salon`.`clients` (  
   `Name` VARCHAR(255) NOT NULL,  
   `ClientId` INT NOT NULL AUTO_INCREMENT,  
-  `StylistId` VARCHAR(45) NOT NULL DEFAULT 0,
+  `StylistId` Int(11)) NOT NULL DEFAULT 0,
   PRIMARY KEY (`ClientId`));
   3. _Create Stylists Table:_  
     CREATE TABLE `salon`.`stylists` (  
   `name` VARCHAR(255) NOT NULL,  
   `specialty` VARCHAR(255) NOT NULL,  
-  `stylistId` INT NOT NULL DEFAULT 0,
+  `stylistId` INT NOT NULL DEFAULT 0 AUTO_INCREMENT,
   PRIMARY KEY (`stylistId`));  
   *_To use this Database you will need to create a file "appsettings.json" in the Salon directory of the project. Add this text to the file:_  
   {  

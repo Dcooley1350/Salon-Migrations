@@ -24,7 +24,7 @@
         <ul>
             @foreach(Client model in @ViewBag.Clients)
             {
-                <h2><li>@Html.ActionLink($"{model.Name}, Id: {model.ClientId}", "Details","Client", new { id = model.ClientId})</li></h2>
+                <h2><li>@Html.ActionLink($"{model.Name}, Id: {model.ClientId}", "Details","Client", new { id = model.ClientId}, new { @class ="index-list"})</li></h2>
             }
         </ul>
         }
