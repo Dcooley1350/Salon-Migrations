@@ -40,7 +40,7 @@ _The purpose of this application is to give Eau Claire's Salon employees the abi
   *_To use this Database you will need to create a file "appsettings.json" in the Salon directory of the project. Add this text to the file:_  
   {  
     "ConnectionStrings": {  
-        "SalonConnection": "Server=localhost;Port=3306;database=salon;uid=root;pwd=epicodus;"  
+        "SalonConnection": "Server=localhost;Port=3306;database=devin_cooley;uid=root;pwd=epicodus;"  
     }  
   }  
   _This will connect your application to the previously created Databases._
