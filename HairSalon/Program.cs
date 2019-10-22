@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Restaurant
+namespace Salon
 {
     public class Program
     {

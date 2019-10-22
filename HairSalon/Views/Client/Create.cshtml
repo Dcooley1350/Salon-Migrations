@@ -27,7 +27,7 @@ else
             @Html.LabelFor(model => model.Name)
             @Html.TextBoxFor(model => model.Name, new {@class = "form-control"})
             <br>
-            @Html.LabelFor(model => model.Stylist)
+            @Html.Label("Select Stylist")
             @Html.DropDownList("StylistId")
             <br>
             <input type="submit" value="Add Client" class="btn button btn-success";>

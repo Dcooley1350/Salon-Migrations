@@ -16,16 +16,16 @@
 <div class="card">
     <div class="card-body">
         <h3 class="card-title">Clients</h3>
-        @if(@ViewBag.Clients.Count == 0)
+        @if(@Model.Clients.Count == 0)
         {
             <h2><i>The Database contains no clients linked to this Stylist at this time.</i></h2>
         }
         else
         {
         <ul>
-            @foreach(Client model in @ViewBag.Clients)
+            @foreach(var join in Model.Clients)
             {
-                <h2><li>@Html.ActionLink($"{model.Name}, Id: {model.ClientId}", "Details","Client", new { id = model.ClientId}, new { @class ="index-list"})</li></h2>
+                <h2><li>@Html.ActionLink($"{join.Client.Name}, Id: {join.Client.ClientId}", "Details","Client", new { id = join.Client.ClientId}, new { @class ="index-list"})</li></h2>
             }
         </ul>
         }

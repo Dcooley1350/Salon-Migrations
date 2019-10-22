@@ -33,15 +33,18 @@ namespace Salon.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            Stylist foundStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
-            ViewBag.Clients = _db.Clients.Where(Clients =>Clients.StylistId == id).ToList();
-            return View(foundStylist);
+            var thisStylist = _db.Stylists
+            .Include(stylist => stylist.Clients)
+            .ThenInclude(join => join.Client)
+            .FirstOrDefault(stylist => stylist.StylistId == id);
+            return View(thisStylist);
         }
         [HttpGet]
         public ActionResult Delete(int id)
         {
             Stylist foundStylist = _db.Stylists.FirstOrDefault( stylist => stylist.StylistId == id);
-            ViewBag.AssociatedClients = _db.Clients.Where( client => client.StylistId == id);
+            ViewBag.AssociatedClients = _db.Clients.ToList();
+            //.Where( client => client.StylistId == id);
             return View(foundStylist);
         }
         [HttpPost, ActionName("Delete")]
@@ -49,7 +52,8 @@ namespace Salon.Controllers
         {
             Stylist foundStylist = _db.Stylists.FirstOrDefault( stylist => stylist.StylistId == id);
             _db.Stylists.Remove(foundStylist);
-            List<Client> foundClients = _db.Clients.Where(client => client.StylistId == id).ToList();
+            List<Client> foundClients = _db.Clients.ToList();
+            //.Where(client => client.StylistId == id).ToList();
             foreach(Client client in foundClients)
             {
                 _db.Clients.Remove(client);

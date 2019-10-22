@@ -3,7 +3,7 @@
 }
 @using Salon.Models;
 @model Salon.Models.Client;
-<div class="card">
+ <div class="card">
     <div class="card-body">
         <h1 class="card-title text-center">Update Client: @Model.Name</h1>
     </div>     
@@ -16,11 +16,10 @@
             @Html.LabelFor(model => model.Name)
             @Html.TextBoxFor(model => model.Name, new {@class = "form-control"})
             <br>
-            @Html.LabelFor(model => model.Stylist)
+            @Html.Label("Select Stylist")
             @Html.DropDownList("StylistId")
             <br>
             <input type="submit" value="Save" class="btn button btn-info";>
         }
     </div>
 </div>
-}

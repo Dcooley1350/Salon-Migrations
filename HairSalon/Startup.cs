@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Salon.Models;
 
-namespace Restaurant
+namespace Salon
 {
     public class Startup
     {

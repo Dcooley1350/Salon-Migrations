@@ -4,9 +4,13 @@ namespace Salon.Models
 {
     public class Client
     {
+        public Client()
+        {
+            this.Stylists = new HashSet<StylistClient>();
+        }
+
         public string Name { get; set; }
         public int ClientId { get; set; }
-        public int StylistId { get; set; }
-        public virtual Stylist Stylist { get; set; }
+        public ICollection<StylistClient> Stylists { get; set; }
     }
 }
