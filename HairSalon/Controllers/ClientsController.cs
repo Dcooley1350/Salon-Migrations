@@ -4,22 +4,31 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace Salon.Controllers
 {
+    [Authorize]
     public class ClientController : Controller
     {
         private readonly SalonContext _db;
-
-        public ClientController(SalonContext db)
+        private readonly UserManager<ApplicationUser> _userManager; 
+        public ClientController(SalonContext db, UserManager<ApplicationUser> userManager)
         {
             _db = db;
+            _userManager = userManager;
         }
         
         [HttpGet]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(_db.Clients.ToList());
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            var userItems = _db.Clients.Where(entry => entry.User.Id == currentUser.Id);
+            return View(userItems);
         }
         [HttpGet]
         public ActionResult Create()
@@ -29,16 +38,20 @@ namespace Salon.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Client client, int StylistId)
+        public async Task<ActionResult> Create(Client client, int StylistId)
         {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            client.User = currentUser;
             _db.Clients.Add(client);
-            if(StylistId != 0)
+            if (StylistId != 0)
             {
-                _db.StylistClient.Add(new StylistClient() { StylistId = StylistId, ClientId = client.ClientId});
+                _db.StylistClient.Add(new StylistClient() { StylistId = StylistId, ClientId = client.ClientId });
             }
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [HttpGet]
         public ActionResult Details(int id)
         {

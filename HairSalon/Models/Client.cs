@@ -11,6 +11,7 @@ namespace Salon.Models
 
         public string Name { get; set; }
         public int ClientId { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public ICollection<StylistClient> Stylists { get; set; }
     }
 }
